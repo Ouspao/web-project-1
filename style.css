@@ -1,7 +1,16 @@
+/* Запобігає непередбачуваним overflow при додаванні padding */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/* Відступи для кращого відображення контенту на мобільних  */
+main {
+  padding: 0 15px;
+}
+
 :root {
   --primary-color: #2563eb;
   --text-color: #1e293b;
-  --bg-color: #eb0000;
+  --bg-color: #cecece;
 }
 
 body {
@@ -12,4 +21,23 @@ body {
 
 h1 {
   color: var(--primary-color);
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+@media (min-width: 768px) {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav {
+    flex-direction: row;
+  }
 }
