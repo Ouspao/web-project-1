@@ -1,8 +1,8 @@
-/* Запобігає непередбачуваним overflow при додаванні padding */
+/* Запобігає overflow */
 *, *::before, *::after {
   box-sizing: border-box;
 }
-/* Відступи для кращого відображення контенту на мобільних  */
+
 main {
   padding: 0 15px;
 }
@@ -23,13 +23,14 @@ h1 {
   color: var(--primary-color);
 }
 
+/* 📱 MOBILE FIRST */
 nav {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-
+/* 💻 Від 768px */
 @media (min-width: 768px) {
   header {
     display: flex;
@@ -40,4 +41,11 @@ nav {
   nav {
     flex-direction: row;
   }
+}
+
+/* Grid для проєктів */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
