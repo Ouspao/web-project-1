@@ -1,20 +1,45 @@
 console.log("JS connected!");
 
-const myProjects = [
+const projects = [
   { id: 1, title: "Сайт-візитка", tech: "HTML/CSS" },
-  { id: 2, title: "Магазин", tech: "JavaScript" }
+  { id: 2, title: "Todo App", tech: "JavaScript" },
+  { id: 3, title: "Портфоліо", tech: "HTML/CSS/JS" }
 ];
 
-console.log(myProjects[0]);
-console.log(myProjects[0].title);
+const container = document.querySelector('#projects-container');
 
-const list = document.querySelector('#projects-list');
+function createProjectCard(project) {
+  return `
+    <div class="project-card">
+      <h3>${project.title}</h3>
+      <p>${project.tech}</p>
+    </div>
+  `;
+}
 
-if (list) {
-  myProjects.forEach(project => {
-    const li = document.createElement('li');
-    li.textContent = project.title + " (" + project.tech + ")";
-    list.appendChild(li);
+function renderProjects(list) {
+  if (!container) return;
+
+  const html = list
+    .map(project => createProjectCard(project))
+    .join('');
+
+  container.innerHTML = html;
+}
+
+renderProjects(projects);
+
+const searchInput = document.querySelector('#search-input');
+
+if (searchInput) {
+  searchInput.addEventListener('input', () => {
+    const value = searchInput.value.toLowerCase();
+
+    const filtered = projects.filter(project =>
+      project.title.toLowerCase().includes(value)
+    );
+
+    renderProjects(filtered);
   });
 }
 
@@ -39,13 +64,13 @@ if (openBtn && closeBtn && modal) {
   closeBtn.addEventListener('click', () => {
     modal.classList.remove('is-open');
   });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      modal.classList.remove('is-open');
-    }
-  });
 }
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && modal) {
+    modal.classList.remove('is-open');
+  }
+});
 
 const form = document.querySelector('#contact-form');
 const nameInput = document.querySelector('#user-name');
