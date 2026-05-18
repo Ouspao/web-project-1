@@ -59,6 +59,65 @@ if (searchInput) {
 
 loadPosts();
 
+let tasks = [];
+
+const taskInput = document.querySelector('#task-input');
+const addTaskBtn = document.querySelector('#add-task');
+const taskList = document.querySelector('#task-list');
+
+function saveTasks() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  const data = localStorage.getItem('tasks');
+
+  if (data) {
+    tasks = JSON.parse(data);
+  }
+}
+
+function renderTasks() {
+  if (!taskList) return;
+
+  taskList.innerHTML = '';
+
+  tasks.forEach((task, index) => {
+    const li = document.createElement('li');
+    li.textContent = task.text;
+
+    const btn = document.createElement('button');
+    btn.textContent = 'X';
+
+    btn.addEventListener('click', () => {
+      tasks.splice(index, 1);
+      saveTasks();
+      renderTasks();
+    });
+
+    li.appendChild(btn);
+    taskList.appendChild(li);
+  });
+}
+
+if (addTaskBtn && taskInput) {
+  addTaskBtn.addEventListener('click', () => {
+    const value = taskInput.value.trim();
+
+    if (value === '') return;
+
+    tasks.push({ text: value });
+
+    saveTasks();
+    renderTasks();
+
+    taskInput.value = '';
+  });
+}
+
+loadTasks();
+renderTasks();
+
 const themeBtn = document.querySelector('#theme-toggle');
 const bodyElement = document.body;
 

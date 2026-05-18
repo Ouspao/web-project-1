@@ -86,7 +86,8 @@ button {
   border-radius: 8px;
 }
 
-#search-input {
+#search-input,
+#task-input {
   display: block;
   width: 100%;
   padding: 0.7rem;
@@ -108,6 +109,32 @@ button {
   font-weight: 600;
 }
 
+#tasks {
+  margin-top: 2rem;
+}
+
+#task-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+#task-list li {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#task-list button {
+  margin-top: 0;
+  margin-left: 1rem;
+  padding: 0.4rem 0.7rem;
+}
+
 footer {
   text-align: center;
   padding: 1rem;
@@ -123,7 +150,8 @@ footer {
 }
 
 .dark-theme .project-card,
-.dark-theme .post {
+.dark-theme .post,
+.dark-theme #task-list li {
   background-color: #222;
   color: #fff;
   border-color: #444;
