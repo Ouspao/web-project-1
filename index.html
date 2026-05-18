@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Портфоліо Дмитра</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
@@ -14,6 +13,7 @@
 
 <header>
   <h1>Дмитро</h1>
+
   <nav>
     <a href="#about">Про мене</a>
     <a href="#skills">Навички</a>
@@ -27,6 +27,8 @@
   <section id="about">
     <h2>Про мене</h2>
     <p>Коротка інформація про автора сторінки. Тут можна розповісти про досвід, освіту та хобі.</p>
+
+    <button id="theme-toggle">Змінити тему</button>
   </section>
 
   <section id="skills">
@@ -36,30 +38,39 @@
 
   <section id="projects">
     <h2>Мої проєкти</h2>
+
     <div class="projects-container">
       <article class="project">
         <h3>Проєкт 1</h3>
         <p>Опис проєкту та його особливості.</p>
       </article>
+
       <article class="project">
         <h3>Проєкт 2</h3>
         <p>Опис проєкту та його особливості.</p>
       </article>
+
       <article class="project">
         <h3>Проєкт 3</h3>
         <p>Опис проєкту та його особливості.</p>
       </article>
+
       <article class="project">
         <h3>Проєкт 4</h3>
         <p>Опис проєкту та його особливості.</p>
       </article>
     </div>
+
+    <h3>Проєкти з JavaScript</h3>
+    <ul id="projects-list"></ul>
   </section>
 
   <section id="contacts">
     <h2>Контакти</h2>
     <p>Email: example@mail.com</p>
     <p>Телефон: +380 00 000 0000</p>
+
+    <button id="open-modal">Контакти</button>
   </section>
 
 </main>
@@ -68,5 +79,17 @@
   <p>© 2026 Дмитро</p>
 </footer>
 
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <button id="close-modal">Закрити</button>
+
+    <form id="contact-form">
+      <input type="text" id="user-name" placeholder="Ваше ім'я">
+      <button type="submit">Надіслати</button>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
