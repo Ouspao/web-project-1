@@ -78,16 +78,34 @@ button {
   margin-top: 1rem;
 }
 
-.project {
+.project-card {
   background-color: #fff;
-  padding: 1rem;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
   border-radius: 8px;
 }
 
-#projects-list {
-  background-color: #fff;
-  padding: 1rem 1rem 1rem 2rem;
+#search-input {
+  display: block;
+  width: 100%;
+  padding: 0.7rem;
+  margin: 1rem 0;
+  border: 1px solid #999;
   border-radius: 8px;
+  font-size: 1rem;
+}
+
+.post {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+#loading {
+  font-weight: 600;
 }
 
 footer {
@@ -104,10 +122,11 @@ footer {
   color: #fff;
 }
 
-.dark-theme .project,
-.dark-theme #projects-list {
+.dark-theme .project-card,
+.dark-theme .post {
   background-color: #222;
   color: #fff;
+  border-color: #444;
 }
 
 .modal {
@@ -138,46 +157,6 @@ input {
   margin-top: 1rem;
   border: 1px solid #999;
   border-radius: 8px;
-}
-#search-input {
-  display: block;
-  width: 100%;
-  padding: 0.7rem;
-  margin: 1rem 0;
-  border: 1px solid #999;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.project-card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-}
-
-.dark-theme .project-card {
-  background-color: #222;
-  color: #fff;
-  border-color: #444;
-}
-.post {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-}
-
-.dark-theme .post {
-  background-color: #222;
-  color: #fff;
-  border-color: #444;
-}
-
-#loading {
-  font-weight: 600;
 }
 
 @media (min-width: 768px) {

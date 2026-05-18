@@ -18,6 +18,7 @@
     <a href="#about">Про мене</a>
     <a href="#skills">Навички</a>
     <a href="#projects">Проєкти</a>
+    <a href="#posts">API</a>
     <a href="#contacts">Контакти</a>
   </nav>
 </header>
@@ -35,20 +36,36 @@
     <h2>Навички</h2>
     <p>HTML, CSS, JavaScript, React, Responsive Design, Accessibility (WCAG)</p>
   </section>
-  
-<section id="posts">
-  <h2>Дані з API</h2>
 
-  <p id="loading">Завантаження...</p>
-
-  <div id="posts-container"></div>
-</section>
   <section id="projects">
     <h2>Мої проєкти</h2>
 
-   <input type="text" id="search-input" placeholder="Пошук проєктів...">
+    <div class="projects-container">
+      <div class="project-card">
+        <h3>Сайт-візитка</h3>
+        <p>HTML/CSS</p>
+      </div>
 
-<div class="projects-container" id="projects-container"></div>
+      <div class="project-card">
+        <h3>Todo App</h3>
+        <p>JavaScript</p>
+      </div>
+
+      <div class="project-card">
+        <h3>Портфоліо</h3>
+        <p>HTML/CSS/JS</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="posts">
+    <h2>Міні застосунок API</h2>
+
+    <input type="text" id="search-input" placeholder="Пошук...">
+
+    <p id="loading">Завантаження...</p>
+
+    <div id="posts-container"></div>
   </section>
 
   <section id="contacts">

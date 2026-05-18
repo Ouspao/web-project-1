@@ -1,47 +1,63 @@
 console.log("JS connected!");
 
-const projects = [
-  { id: 1, title: "Сайт-візитка", tech: "HTML/CSS" },
-  { id: 2, title: "Todo App", tech: "JavaScript" },
-  { id: 3, title: "Портфоліо", tech: "HTML/CSS/JS" }
-];
+let allPosts = [];
 
-const container = document.querySelector('#projects-container');
+const postsContainer = document.querySelector('#posts-container');
+const loading = document.querySelector('#loading');
+const searchInput = document.querySelector('#search-input');
 
-function createProjectCard(project) {
-  return `
-    <div class="project-card">
-      <h3>${project.title}</h3>
-      <p>${project.tech}</p>
-    </div>
-  `;
-}
-
-function renderProjects(list) {
-  if (!container) return;
+function renderPosts(list) {
+  if (!postsContainer) return;
 
   const html = list
-    .map(project => createProjectCard(project))
+    .map(post => `
+      <div class="post">
+        <h3>${post.title}</h3>
+        <p>${post.body}</p>
+      </div>
+    `)
     .join('');
 
-  container.innerHTML = html;
+  postsContainer.innerHTML = html;
 }
 
-renderProjects(projects);
+async function loadPosts() {
+  if (!loading || !postsContainer) return;
 
-const searchInput = document.querySelector('#search-input');
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+
+    if (!response.ok) {
+      throw new Error('Помилка сервера');
+    }
+
+    const data = await response.json();
+
+    allPosts = data.slice(0, 10);
+
+    renderPosts(allPosts);
+
+    loading.style.display = 'none';
+
+  } catch (error) {
+    console.error(error);
+    loading.textContent = 'Помилка завантаження';
+  }
+}
 
 if (searchInput) {
   searchInput.addEventListener('input', () => {
     const value = searchInput.value.toLowerCase();
 
-    const filtered = projects.filter(project =>
-      project.title.toLowerCase().includes(value)
+    const filtered = allPosts.filter(post =>
+      post.title.toLowerCase().includes(value)
     );
 
-    renderProjects(filtered);
+    renderPosts(filtered);
   });
 }
+
+loadPosts();
 
 const themeBtn = document.querySelector('#theme-toggle');
 const bodyElement = document.body;
@@ -86,40 +102,3 @@ if (form && nameInput) {
     }
   });
 }
-async function loadPosts() {
-  const loading = document.querySelector('#loading');
-  const postsContainer = document.querySelector('#posts-container');
-
-  if (!loading || !postsContainer) return;
-
-  try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-
-    if (!response.ok) {
-      throw new Error('Помилка завантаження даних');
-    }
-
-    const data = await response.json();
-
-    console.log(data);
-
-    const html = data
-      .slice(0, 5)
-      .map(post => `
-        <div class="post">
-          <h3>${post.title}</h3>
-          <p>${post.body}</p>
-        </div>
-      `)
-      .join('');
-
-    postsContainer.innerHTML = html;
-    loading.style.display = 'none';
-
-  } catch (error) {
-    console.error(error);
-    loading.textContent = 'Помилка завантаження даних';
-  }
-}
-
-loadPosts();
